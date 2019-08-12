@@ -2,26 +2,27 @@ import React, { Component } from 'react';
 import { observer } from 'mobx-react'
 import './App.css';
 import Item from './components/Item';
-
+import DevTools from 'mobx-react-devtools'; 
 
 @observer
 class App extends Component {
   handleChange = (e) => {
+    // console.log(e.target.value)
     this.setState({
       newItem: e.target.value
     })
   }
-  addItem = () => {
+  addItem = (e) => {
     this.props.store.addItem(this.state.newItem)
   }
   render() {
+    // console.log(this.props.store.list)
     return (
       <div className="App">
+        <DevTools/>
         <input onChange = {this.handleChange}/>
-        <button onClick = {this.addItem}>Add</button>
-      {/* your code here
-          You should map each grocery item into an Item component  
-      */}  
+        <button onClick={this.addItem}>Add</button>
+        {this.props.store.list.map(i => <Item store={this.props.store} item={i} />)} 
       </div>
     );
   }
