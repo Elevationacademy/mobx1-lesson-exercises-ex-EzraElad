@@ -19,7 +19,7 @@ export class ShoppingList {
         let item = this.list.find( i => i.name === itemName)
         item.location = newLocation
     }
-    deleteItem = (delName) => {
+    @action deleteItem = (delName) => {
         let index = this.list.findIndex( i => i.name === delName)
         this.list.splice(index , 1)
     }
