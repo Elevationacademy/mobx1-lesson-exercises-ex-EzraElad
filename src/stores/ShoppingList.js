@@ -24,7 +24,7 @@ export class ShoppingList {
         this.list.splice(index , 1)
     }
 }
-
+//sadksadlksad
 
 
 
